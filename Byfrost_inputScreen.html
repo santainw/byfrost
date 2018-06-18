@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <style type="text/css">
+  </style>
+  <script src="/javascripts/application.js" type="text/javascript" charset="utf-8" async defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+ <!--  <script>
+  $(document).ready(function(){
+    $("p").click(function(){
+        $(this).hide();
+    });
+  });
+  </script> -->
+
+<script>
+
+$(document).ready(function(){
+    $("input").focus(function(){
+        $(this).css("background-color", "#cccccc");
+    });
+    $("input").blur(function(){
+        $(this).css("background-color", "#ffffff");
+    });
+});
+
+$(document).ready(function(){
+    $("#templateGroup").change(function(){
+      var insertTextTemplateGroup = $("#templateGroup").val();
+            $("#comment").append("TemplateGroup :" + insertTextTemplateGroup +"\n");
+      });
+
+    $("#templateName").change(function(){
+      var insertTextTemplateName = $("#templateName").val();
+            $("#comment").append("TemplateName :" + insertTextTemplateName +"\n");
+      });
+
+    $("#mobileNo").change(function(){
+      var insertTextMobile = $("#mobileNo").val();
+            $("#comment").append("MobileNo :" + insertTextMobile +"\n");
+      });
+
+    $("#imsi").change(function(){
+      var insertTextImsi = $("#imsi").val();
+            $("#comment").append("Imsi :" + insertTextImsi +"\n");
+      });
+
+    // $("#mobileNo").click(function(){
+    //   $("#comment").val('');
+    // });
+  });
+
+</script>
+
+
+</script>
+  <title>Byfrost</title>
+</head>
+<body>
+<!-- Header -->
+  <div class="text-center">
+    <p class="text-right">Logged in as : Pegazus</p>
+    <img src="testimg.jpg" class="img-rounded" alt="Cinque Terre"
+    style="height: 200px; width: 200px;">
+  </div>
+  
+    <p></p>
+<!-- END Header -->
+
+   <div class="container">
+     <div class="col-sm-4"></div>
+       <div class="col-sm-4">
+         <p>Template Group :
+             <select class="form-control" id="templateGroup">
+              <option></option>
+              <option>SIM2Fly</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+             </select>
+         </p>
+       </div>  
+     <div class="col-sm-4"></div>
+   </div>
+   <div class="container">
+     <div class="col-sm-4"></div>
+     <div class="col-sm-4">
+       <p>Template Name :
+           <select class="form-control" id="templateName">
+              <option></option>
+              <option>Add SIM2Fly</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+           </select>
+       </p>
+     </div>
+     <div class="col-sm-4"></div>
+   </div>
+
+   <p></p>
+    <h3><p class="text-center">--------- Fill in Request Parameter(s) ---------</p></h3>
+
+     <div class="container">
+     <div class="col-sm-4"></div>
+       <div class="col-sm-4">
+         <p>
+            <label for="usr">mobileNo :</label>
+            <input type="text" class="form-control" id="mobileNo">
+         </p>
+       </div>  
+     <div class="col-sm-4"></div>
+   </div>
+   <div class="container">
+     <div class="col-sm-4"></div>
+     <div class="col-sm-4">
+       <p><label for="usr">imsi :</label>
+        <input type="text" class="form-control" id="imsi">
+       </p>
+     </div>
+     <div class="col-sm-4"></div>
+   </div>
+
+   <div class="container">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <p></p>
+        <h3><p class="text-center">
+         --------- Request Message ---------
+         </p></h3>
+        <textarea class="form-control" rows="5" id="comment"></textarea>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+    
+  
+
+
+<!-- Body -->
+
+  <p></p>
+
+  <div class="container"> 
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <div class="text-right">
+        <h3><button type="button" class="btn btn-default btn-lg" onclick="validateReq()">Validate</button></h3>
+      </div>
+    </div>
+    <div class="col-sm-2"></div>
+    </div>
+  </div>
+
+  <div class="container"> 
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">
+      <div class="text-center">
+        <h3><button type="button" class="btn btn-default btn-lg" id="submit" onclick="test()">Submit</button></h3>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="text-center">
+        <h3><button type="button" class="btn btn-default btn-lg">Cancel</button></h3>
+      </div>
+    </div>
+    <div class="col-sm-2"></div>   
+  </div>
+<input class="from-control" ng-model="text" placeholder="Your Name"></input>
+<p>Your Name {{ text }}</p>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script>
+function validateReq(){
+  var templateGroup = document.getElementById("templateGroup").value;
+  var templateName = document.getElementById("templateName").value;
+  var mobileNo = document.getElementById("mobileNo").value;
+  var imsi = document.getElementById("imsi").value;
+  var reqMessage = "TemplateGroup : " + templateGroup + "\n" + "TemplateName : " + templateName + "\n" + "MobileNo : " + mobileNo + "\n" + "Imsi : " + imsi;
+  document.getElementById("comment").value = reqMessage;
+}
+</script>
+<!-- END Body -->
+
+</body>
+</html>
